@@ -6,6 +6,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\HealthinfoController;
+use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\WorkerLoginController;
+use App\Http\Controllers\Auth\WorkerRegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +43,38 @@ Route::patch('/facility-profile', [FacilityController::class, 'update'])->name('
 
 }
 );
+Route::group(['middleware' => ['auth']], function() {
+
+
+   
+
+});
+/*
+*Email verification
+*Worker Routes
+*/
+Route::prefix('worker')->group(function() {
+    Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify')->middleware(['signed']);
+    Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+
+    Route::get('/worker-login',[WorkerLoginController::class, 'showLoginForm'])->name('worker.login');
+    Route::post('/worker-login', [WorkerLoginController::class, 'login'])->name('worker.login.submit');
+    Route::get('logout/', [WorkerLoginController::class, 'logout'])->name('worker.logout');
+    Route::get('/worker-register',[WorkerRegisterController::class, 'showRegisterForm'])->name('worker.register');
+    Route::post('/worker-register', [WorkerRegisterController::class, 'workerregister'])->name('worker.register.submit');
+
+
+
+     Route::group(['middleware' => ['verified']], function() {
+            /**
+             * Dashboard Routes
+             */
+            Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard.index');
+    });
+
+   }) ;
+
 
 
 Route::get('health-info', [HealthinfoController::class, 'index']);

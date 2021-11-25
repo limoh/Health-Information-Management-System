@@ -70,4 +70,14 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+    public function register(RegisterRequest $request) 
+    {
+        $user = User::create($request->validated());
+
+        event(new Registered($user));
+
+        auth()->login($user);
+
+        return redirect('/')->with('success', "Account successfully registered.");
+    }
 }
