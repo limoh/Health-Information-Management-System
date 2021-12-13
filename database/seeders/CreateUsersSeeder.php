@@ -22,10 +22,10 @@ class CreateUsersSeeder extends Seeder
                'password'=> bcrypt('123.health'),
             ],
             [
-               'name'=>'Facility',
-               'email'=>'user@health.com',
-                'is_admin'=>'0',
-               'password'=> bcrypt('123.him'),
+               'name'=>'Worker',
+               'email'=>'worker@health.com',
+                'is_admin'=>'2',
+               'password'=> bcrypt('123.chw'),
             ],
             [
                'name'=>'Langata Facility',

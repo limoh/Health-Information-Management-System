@@ -44,7 +44,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="{{ asset('assets/img/logo.png') }}" alt="">
-        <span class="d-none d-lg-block">Facility Admin</span>
+        <span class="d-none d-lg-block"> CHW Area</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -72,13 +72,10 @@
      
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="facility-profile">
+              <a class="dropdown-item d-flex align-items-center" href="worker-profile">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
             </li>
 
             <li>
@@ -112,16 +109,8 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
-
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/all-facilities">
-          <i class="bi bi-house"></i>
-          <span>Facilities</span>
-        </a>
-      </li><!-- End facility Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/health-info">
+        <a class="nav-link collapsed" href="/worker/worker-health">
           <i class="bi bi-file-medical"></i>
           <span>Health Information</span>
         </a>

@@ -4,9 +4,9 @@
       <h1>Health Info</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/home">Home</a></li>
-          <li class="breadcrumb-item">Table</li>
-          <li class="breadcrumb-item active">Data</li>
+          <li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
+          <li class="breadcrumb-item">Health</li>
+          <li class="breadcrumb-item active">Quick View</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -26,32 +26,24 @@
                     </div>--->
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
+                    
                     <th scope="col">Names</th>
                     <th scope="col">Facility</th>
                     <th scope="col">Disease</th>
-                    <th scope="col">Sign & Symptomps</th>
-                    <th scope="col">Medication</th>
-                    <th scope="col">Side Effects</th>
-                    <th scope="col">Allergy</th>
-                    <th scope="col">Recorded Date</th>
                     <th class="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                     @foreach($healths as $health)
                  <tr>
-                    <th scope="row">{{ $health->id }}</th>
+                    
                     <td>{{ $health->names }}</td>
                     <td>{{ $health->facility }}</td>
                     <td>{{ $health->disease }}</td>
-                    <td>{{ $health->symptomps_signs }}</td>
-                    <td>{{ $health->medication }}</td>
-                    <td>{{ $health->efects }}</td>
-                    <td>{{ $health->allergy }}</td>
-                    <td>{{ $health->created_at }}</td>
                     <td>
-                        <!---edit if necessary-->
+                        <!---show && delete -->
+                        <a href="{{ route('adminshow-health',$health->id) }}" class="btn btn-success btn-sm"><i class="bi bi-eye"></i></a>
+
                         <a href="javascript:void(0)" class="btn btn-primary delete btn-sm" data-id="{{ $health->id }}"><i class="bi bi-trash"></i></a>
                     </td>
                   </tr>
@@ -109,6 +101,30 @@
                         <label class="col-sm-6 control-label">Medication</label>
                         <div class="col-sm-12">
                             <textarea value="" id="medication" name="medication" required="" placeholder="Enter Medication" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">Blood Sugar</label>
+                        <div class="col-sm-12">
+                            <textarea value="" id="blood_sugar" name="blood_sugar" required="" placeholder="Enter Blood Sugar" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">Blood Pressure</label>
+                        <div class="col-sm-12">
+                            <textarea value="" id="blood_pressure" name="blood_pressure" required="" placeholder="Enter Blood Pressure" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">Weight</label>
+                        <div class="col-sm-12">
+                            <textarea value="" id="weight" name="weight" required="" placeholder="Enter Weight" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">Height</label>
+                        <div class="col-sm-12">
+                            <textarea value="" id="height" name="height" required="" placeholder="Enter Height" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -170,6 +186,10 @@
               $('#disease').val(res.disease);
               $('#symptomps_signs').val(res.symptomps_signs);
               $('#medication').val(res.medication);
+              $('#blood_sugar').val(res.blood_sugar);
+              $('#blood_pressure').val(res.blood_pressure);
+              $('#weight').val(res.weight);
+              $('#height').val(res.height);
               $('#efects').val(res.efects);
               $('#allergy').val(res.allergy);
            }
@@ -198,6 +218,10 @@
           var disease = $("#disease").val();
           var symptomps_signs = $("#symptomps_signs").val();
           var medication = $("#medication").val();
+          var blood_sugar = $("#blood_sugar").var();
+          var blood_pressure = $("#blood_pressure").val();
+          var weight = $("#weight").val();
+          var height = $("height").val();
           var efects = $("#efects").val();
           var allergy = $("#allergy").val();
           $("#btn-save").html('Saving...');
@@ -214,6 +238,10 @@
               disease:disease,
               symptomps_signs:symptomps_signs,
               medication:medication,
+              height:height,
+              weight:weight,
+              blood_sugar:blood_sugar,
+              blood_pressure:blood_pressure,
               efects:efects,
               allergy:allergy,
             },

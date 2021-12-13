@@ -18,7 +18,7 @@
         <div class="col-lg-8">
           <div class="row">
             <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12">
+            <div class="col-xxl-4 col-xl-6">
 
               <div class="card info-card customers-card">
 
@@ -30,16 +30,44 @@
                       <i class="bi bi-house"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>12</h6>
+                      <h6>{{ $facilityCount }}</h6>
                     
 
                     </div>
                   </div>
 
+                  
+
                 </div>
               </div>
 
             </div><!-- End Customers Card -->
+            <!-- chw Card -->
+            <div class="col-xxl-4 col-xl-6">
+
+              <div class="card info-card customers-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Community Health Workers</h5>
+
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-person-lines-fill"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{ $chwCount }}</h6>
+                    
+
+                    </div>
+                  </div>
+                  
+
+                </div>
+              </div>
+
+            </div><!-- End CHW Card -->
+            
             
             <!-- Reports -->
             <div class="col-12">

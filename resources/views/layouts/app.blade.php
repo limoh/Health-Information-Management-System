@@ -106,7 +106,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="adminhome">
+        <a class="nav-link " href="/admin/home">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -114,14 +114,21 @@
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="facility-list">
+        <a class="nav-link collapsed" href="/admin/facility-list">
           <i class="bi bi-house"></i>
           <span>Facilities</span>
         </a>
       </li><!-- End facility Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="health-list">
+        <a class="nav-link collapsed" href="/admin/worker-list">
+          <i class="bi bi-person-lines-fill"></i>
+          <span>Community Health Workers</span>
+        </a>
+      </li><!-- End worker Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/health-list">
           <i class="bi bi-file-medical"></i>
           <span>Health Information</span>
         </a>

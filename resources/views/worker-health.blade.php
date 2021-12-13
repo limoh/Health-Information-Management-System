@@ -1,12 +1,12 @@
-@extends('layouts.user')
+@extends('layouts.worker')
 @section('content')
 <div class="pagetitle">
       <h1>Health Info</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/home">Home</a></li>
-          <li class="breadcrumb-item">Table</li>
-          <li class="breadcrumb-item active">Data</li>
+          <li class="breadcrumb-item"><a href="/worker/home">Home</a></li>
+          <li class="breadcrumb-item">Health</li>
+          <li class="breadcrumb-item active">Quick View</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -21,9 +21,9 @@
               
               <!-- Table with stripped rows -->
               <table class="table datatable">
-                <div class="col-md-12 mb-4 text-right">
+              <!---  <div class="col-md-12 mb-4 text-right">
                         <a class="btn btn-success" id="addNewBook"> Add</a>
-                    </div>
+                    </div>--->
                 <thead>
                   <tr>
                     
@@ -41,9 +41,8 @@
                     <td>{{ $health->facility }}</td>
                     <td>{{ $health->disease }}</td>
                     <td>
-                        <a href="javascript:void(0)" class="btn btn-primary edit btn-sm" data-id="{{ $health->id }}"> <i class="bi bi-pencil-square"></i> </a>
-
-                        <a href="{{ route('show-health',$health->id) }}" class="btn btn-success btn-sm"><i class="bi bi-eye"></i></a>
+                        <!---show && delete -->
+                        <a href="{{ route('workershow-health',$health->id) }}" class="btn btn-success btn-sm"><i class="bi bi-eye"></i></a>
 
                         <a href="javascript:void(0)" class="btn btn-primary delete btn-sm" data-id="{{ $health->id }}"><i class="bi bi-trash"></i></a>
                     </td>
@@ -175,7 +174,7 @@
         // ajax
         $.ajax({
             type:"POST",
-            url: "{{ url('edit-health') }}",
+            url: "{{ url('edit-healths') }}",
             data: { id: id },
             dataType: 'json',
             success: function(res){
@@ -203,7 +202,7 @@
         // ajax
         $.ajax({
             type:"POST",
-            url: "{{ url('delete-health') }}",
+            url: "{{ url('delete-healths') }}",
             data: { id: id },
             dataType: 'json',
             success: function(res){
@@ -219,7 +218,7 @@
           var disease = $("#disease").val();
           var symptomps_signs = $("#symptomps_signs").val();
           var medication = $("#medication").val();
-          var blood_sugar = $("#blood_sugar").val();
+          var blood_sugar = $("#blood_sugar").var();
           var blood_pressure = $("#blood_pressure").val();
           var weight = $("#weight").val();
           var height = $("height").val();
@@ -231,7 +230,7 @@
         // ajax
         $.ajax({
             type:"POST",
-            url: "{{ url('add-update-health') }}",
+            url: "{{ url('add-update-healths') }}",
             data: {
               id:id,
               names:names,
@@ -239,11 +238,11 @@
               disease:disease,
               symptomps_signs:symptomps_signs,
               medication:medication,
-              efects:efects,
               height:height,
               weight:weight,
               blood_sugar:blood_sugar,
               blood_pressure:blood_pressure,
+              efects:efects,
               allergy:allergy,
             },
             dataType: 'json',

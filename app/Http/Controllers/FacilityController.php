@@ -10,7 +10,7 @@ class FacilityController extends Controller
     public function index()
     {
         
-        return view('profile')->with('user', auth()->user());
+        return view('facility-profile')->with('user', auth()->user());
     }
 
     public function update(Request $request)

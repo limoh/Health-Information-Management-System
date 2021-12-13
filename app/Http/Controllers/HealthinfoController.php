@@ -41,6 +41,10 @@ class HealthinfoController extends Controller
                         'medication' => $request->medication,
                         'efects' => $request->efects,
                         'allergy' => $request->allergy,
+                        'blood_sugar'     => $request->blood_sugar,
+                        'blood_pressure'  => $request->blood_pressure,
+                        'height'          => $request->height,
+                        'weight'          => $request->weight,
                         'created_at' => $request->created_at,
                     ]);
     

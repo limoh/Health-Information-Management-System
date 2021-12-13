@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.worker')
    
 @section('content')
  <div class="pagetitle">
       <h1>Dashboard</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="admin/home">Home</a></li>
-          <li class="breadcrumb-item active">Admin Dashboard</li>
+          <li class="breadcrumb-item"><a href="worker/home">Home</a></li>
+          <li class="breadcrumb-item active">CHW Dashboard</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -67,7 +67,10 @@
               </div>
 
             </div><!-- End CHW Card -->
-            
+
+
+
+
             <!-- Reports -->
             <div class="col-12">
               <div class="card">

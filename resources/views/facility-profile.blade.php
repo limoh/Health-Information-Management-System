@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.user')
    
 @section('content')
   <div class="pagetitle">
       <h1>Profile</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="admin/home">Home</a></li>
-          <li class="breadcrumb-item">Users</li>
+          <li class="breadcrumb-item"><a href="home">Home</a></li>
+          <li class="breadcrumb-item">Facility</li>
           <li class="breadcrumb-item active">Profile</li>
         </ol>
       </nav>

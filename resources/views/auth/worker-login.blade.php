@@ -77,7 +77,7 @@
                     </div>
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">{{ __('Login') }}</button>
-                       <a class="btn btn-link" href="worker-register">
+                       <a class="btn btn-link" href="{{ route('register') }}">
                                         Sign Up
                                     </a>
                     </div>

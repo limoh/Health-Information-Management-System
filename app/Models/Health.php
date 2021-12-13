@@ -16,7 +16,10 @@ class Health extends Model
         'medication',
         'efects',
         'allergy',
-        'created_at',
+        'blood_sugar',
+        'weight',
+        'height',
+        'blood_pressure',
     ];
 
     public $timestamps = true;

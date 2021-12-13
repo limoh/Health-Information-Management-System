@@ -54,9 +54,7 @@
                     <h1><span>Health Information Management System</span></h1>
                 </div>
 
-                <div class="mt-8 dark:bg-gray-800">
-                <a href="worker/worker-login"><button class="btn btn-primary">Worker Login</button></a> 
-                </div>
+                
 
                 
             </div>

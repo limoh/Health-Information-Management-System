@@ -22,6 +22,10 @@ class CreateHealthsTable extends Migration
             $table->text('medication');
             $table->text('efects');
             $table->mediumtext('allergy');
+            $table->string('blood_sugar');
+            $table->string('blood_pressure');
+            $table->string('height')->nullable();
+            $table->string('weight');
             $table->timestamps();
         });
     }

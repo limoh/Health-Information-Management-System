@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Health;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -23,7 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $chwCount      = User::where('is_admin','=','2')->count();
+        $facilityCount = User::where('is_admin', '=', '0')->count();
+        return view('home', compact('facilityCount', 'chwCount'));
     }
     /**
      * Show the application dashboard.
@@ -32,6 +36,19 @@ class HomeController extends Controller
      */
     public function adminHome()
     {
-        return view('adminHome');
+        $chwCount      = User::where('is_admin','=','2')->count();
+        $facilityCount = User::where('is_admin', '=', '0')->count();
+        return view('adminHome', compact('facilityCount', 'chwCount'));
+    }
+     /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function workerHome()
+    {
+        $chwCount      = User::where('is_admin','=','2')->count();
+        $facilityCount = User::where('is_admin', '=', '0')->count();
+        return view('workerHome', compact('facilityCount', 'chwCount'));
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
+use App\Models\Worker;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -29,16 +29,16 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+   public function __construct()
     {
-        $this->middleware('guest');
+      $this->middleware('guest:worker', ['except' => ['logout']]);
     }
 
     /**
@@ -50,9 +50,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'names'         => ['required', 'string', 'max:255'],
+            'email'         => ['required', 'string', 'email', 'max:255', 'unique:workers'],
+            'phone'         => ['required', 'string', 'max:255'],
+            'national_ID'   => ['required', 'string', 'max:255'],
+            'password'      => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -64,15 +66,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        return Worker::create([
+            'names'          => $data['names'],
+            'email'         => $data['email'],
+            'phone'         => $data['phone'],
+            'national_ID'   => $data['national_ID'],
+            'password'      => Hash::make($data['password']),
         ]);
     }
     public function register(RegisterRequest $request) 
     {
-        $user = User::create($request->validated());
+        $user = Worker::create($request->validated());
 
         event(new Registered($user));
 

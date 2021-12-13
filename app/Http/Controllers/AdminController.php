@@ -46,12 +46,10 @@ class AdminController extends Controller
      */
     public function facility()
     {
-        $data['facilitys'] = User::orderBy('id','desc')->paginate(5);
+        $data['facilitys'] = User::where('is_admin','=','0')->orderBy('id','desc')->paginate(5);
    
         return view('facility-list',$data);
     }
-    
-   
     /**
      * Store a newly created resource in storage.
      *
@@ -139,6 +137,10 @@ class AdminController extends Controller
                         'medication' => $request->medication,
                         'efects' => $request->efects,
                         'allergy' => $request->allergy,
+                        'blood_sugar'     => $request->blood_sugar,
+                        'blood_pressure'  => $request->blood_pressure,
+                        'height'          => $request->height,
+                        'weight'          => $request->weight,
                         'created_at' => $request->created_at,
                     ]);
     
@@ -160,8 +162,46 @@ class AdminController extends Controller
  
         return response()->json($health);
     }
- 
+    
+    public function healthupdate(Request $request)
+    {
+
+        $health   =   Health::updateOrCreate(
+                    [
+                        'id' => $request->id
+                    ],
+                    [
+                        'names' => $request->names, 
+                        'facility' => $request->facility,
+                        'disease' => $request->disease,
+                        'symptomps_signs' => $request->symptomps_signs,
+                        'medication' => $request->medication,
+                        'efects' => $request->efects,
+                        'allergy' => $request->allergy,
+                        'blood_sugar'     => $request->blood_sugar,
+                        'blood_pressure'  => $request->blood_pressure,
+                        'height'          => $request->height,
+                        'weight'          => $request->weight,
+                        'created_at' => $request->created_at,
+                    ]);
+    
+        return response()->json(['success' => true]);
+    }
    
+    public function show(Health $health)
+    {
+        
+        
+        return view('adminshow-health', compact('health'));
+    }
+
+     public function healthshow(Health $health)
+    {
+        
+        
+        return view('show-health', compact('health'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -174,4 +214,76 @@ class AdminController extends Controller
    
         return response()->json(['success' => true]);
     }
+
+    /*
+    *Workers
+    *
+    */
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function worker()
+    {
+        $data['workers'] = User::where('is_admin','=','2')->orderBy('id','desc')->paginate(5);
+   
+        return view('worker-list',$data);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeworker(Request $request)
+    {
+
+        $facility   =   User::updateOrCreate(
+                    [
+                        'id' => $request->id
+                    ],
+                    [
+                        'name' => $request->name, 
+                        'email' => $request->email,
+                        'password' => $request->password,
+                        'is_admin' => $request->is_admin,
+                    ]);
+    
+        return response()->json(['success' => true]);
+    }
+    
+    
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function editworker(Request $request)
+    {   
+
+        $where = array('id' => $request->id);
+        $worker  = User::where($where)->first();
+ 
+        return response()->json($health);
+    }
+ 
+   
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyworker(Request $request)
+    {
+        $worker = User::where('id',$request->id)->delete();
+   
+        return response()->json(['success' => true]);
+    }
+
 }
+
