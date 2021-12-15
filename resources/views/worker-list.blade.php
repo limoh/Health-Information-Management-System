@@ -90,7 +90,7 @@
                             <input type="radio" name="0" value="0">Facility
                           </label>
                           <label>
-                            <input type="radio" name="0" value="0">Health Worke2
+                            <input type="radio" name="0" value="0">Health Worker
                           </label>
                         </div>
                     </div>
