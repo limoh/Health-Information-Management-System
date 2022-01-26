@@ -38,8 +38,8 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/admin/profile', [AdminController::class, 'index'])->name('users.edit');
 Route::patch('/admin/profile', [AdminController::class, 'update'])->name('users.update');
-Route::get('/adminshow-health/{id}', [AdminController::class, 'show'])->name('adminshow-health');
-Route::get('/show-health/{id}', [AdminController::class, 'healthshow'])->name('show-health');
+Route::get('/adminshow-health/{health}', [FacilityController::class, 'show'])->name('adminshow-health');
+Route::get('/show-health/{health}', [AdminController::class, 'healthshow'])->name('show-health');
 
 Route::get('/facility-profile', [FacilityController::class, 'index'])->name('users.edit');
 Route::patch('/facility-profile', [FacilityController::class, 'update'])->name('users.update');
@@ -49,7 +49,7 @@ Route::patch('/facility-profile', [FacilityController::class, 'update'])->name('
 */
 Route::get('/worker/worker-profile', [DashboardController::class, 'index'])->name('users.edit');
 Route::patch('/worker/worker-profile', [DashboardController::class, 'update'])->name('users.update');
-Route::get('/workershow-health/{id}', [DashboardController::class, 'show'])->name('workershow-health');
+Route::get('/workershow-health/{health}', [DashboardController::class, 'show'])->name('workershow-health');
 Route::get('/show-healths/{id}', [DashboardController::class, 'healthshow'])->name('show-healths');
 
 }
@@ -106,7 +106,7 @@ Route::post('add-update-facility', [AdminController::class, 'store']);
 Route::post('edit-facility', [AdminController::class, 'edit']);
 Route::post('delete-facility', [AdminController::class, 'destroy']);
 
-Route::get('admin/health-list', [AdminController::class, 'health']);
+Route::get('admin/health-list', [FacilityController::class, 'health']);
 Route::post('add-update-health', [AdminController::class, 'healthstore']);
 Route::post('edit-health', [AdminController::class, 'healthedit']);
 Route::post('delete-health', [AdminController::class, 'healthdestroy']);

@@ -51,7 +51,7 @@
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
-              {!! $healths->links() !!}
+              
             </div>
           </div>
 

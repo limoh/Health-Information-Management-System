@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Health;
 
 class FacilityController extends Controller
 {
@@ -36,6 +37,20 @@ class FacilityController extends Controller
 
         return back()->with('success_message', 'Profile (and password) updated successfully!');
     }
+
+     public function health()
+    {
+        $healths = Health::all();
+   
+        return view('health-list', compact('healths'));
+    }
+
+    public function show(Health $health)
+    {
+         
+        return view('adminshow-health', compact('health'));
+    }
+
 
     /**
      * Display a listing of the resource.

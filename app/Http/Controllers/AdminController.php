@@ -108,12 +108,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function health()
-    {
-        $data['healths'] = Health::orderBy('id','desc')->paginate(5);
    
-        return view('health-list',$data);
-    }
     
    
     /**
@@ -186,13 +181,6 @@ class AdminController extends Controller
                     ]);
     
         return response()->json(['success' => true]);
-    }
-   
-    public function show(Health $health)
-    {
-        
-        
-        return view('adminshow-health', compact('health'));
     }
 
      public function healthshow(Health $health)
